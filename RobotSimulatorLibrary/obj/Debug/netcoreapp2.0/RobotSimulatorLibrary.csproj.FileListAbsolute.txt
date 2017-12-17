@@ -1,0 +1,17 @@
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\bin\Debug\netcoreapp2.0\RobotSimulatorLibrary.deps.json
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\bin\Debug\netcoreapp2.0\RobotSimulatorLibrary.dll
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\bin\Debug\netcoreapp2.0\RobotSimulatorLibrary.pdb
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.csproj.CoreCompileInputs.cache
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.AssemblyInfoInputs.cache
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.AssemblyInfo.cs
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.dll
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.pdb
+D:\Vs2017Projects\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.csprojResolveAssemblyReference.cache
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\bin\Debug\netcoreapp2.0\RobotSimulatorLibrary.deps.json
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\bin\Debug\netcoreapp2.0\RobotSimulatorLibrary.dll
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\bin\Debug\netcoreapp2.0\RobotSimulatorLibrary.pdb
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.csproj.CoreCompileInputs.cache
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.AssemblyInfoInputs.cache
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.AssemblyInfo.cs
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.dll
+D:\bak\Electron\RobotSimulator\RobotSimulatorLibrary\obj\Debug\netcoreapp2.0\RobotSimulatorLibrary.pdb
