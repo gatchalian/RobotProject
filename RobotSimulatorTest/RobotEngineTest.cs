@@ -12,8 +12,9 @@ namespace RobotSimulatorTest
 {
     public class RobotSimulatorTest
     {
+        //some positive tests
         [Fact]
-        public void WhenPlacedOriginFacingNorth_MoveAndOtherMoves()
+        public void When_Place_CommandValidOrigin_FacingNorth_And_Move_Left_Right()
         {
             RegistrationService.Register();
             var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
@@ -28,7 +29,7 @@ namespace RobotSimulatorTest
         }
 
         [Fact]
-        public void WhenPlacedOriginFacingNorth_Move()
+        public void When_Place_CommandValidOrigin_FacingNorth_And_Move()
         {
             RegistrationService.TableWidth = 5;
             RegistrationService.TableHeight = 5;
@@ -44,7 +45,7 @@ namespace RobotSimulatorTest
         }
 
         [Fact]
-        public void WhenPlacedOriginFacingNorth_Left()
+        public void When_Place_CommandValidOrigin_FacingNorth_And_Left()
         {
             RegistrationService.TableWidth = 5;
             RegistrationService.TableHeight = 5;
@@ -59,7 +60,7 @@ namespace RobotSimulatorTest
             Assert.Equal(0, robot.CurrentPosition.Location.Y);
         }
         [Fact]
-        public void WhenPlacedOriginFacingNorth_Move_Move_Left_Move()
+        public void When_Place_CommandValidOrigin_FacingEast_And_Move_Move_Left_Move()
         {
             RegistrationService.TableWidth = 5;
             RegistrationService.TableHeight = 5;
@@ -78,7 +79,7 @@ namespace RobotSimulatorTest
         }
 
         [Fact]
-        public void WhenInactiveStateWithInvalidEntry()
+        public void When_InactiveState_And_InvalidEntry_Received()
         {
             RegistrationService.TableWidth = 5;
             RegistrationService.TableHeight = 5;
@@ -92,7 +93,7 @@ namespace RobotSimulatorTest
         }
 
         [Fact]
-        public void WhenInactiveStateWithInvalidPlaceCommandParameter()
+        public void When_InactiveState_Valid_Place_Command_But_Invalid_Parameters()
         {
             RegistrationService.TableWidth = 5;
             RegistrationService.TableHeight = 5;
