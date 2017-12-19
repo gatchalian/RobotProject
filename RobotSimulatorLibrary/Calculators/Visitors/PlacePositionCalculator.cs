@@ -16,7 +16,9 @@ namespace RobotSimulatorLibrary.Calculators.Visitors
 
         public override (Position.Position position, IState state, bool isMatched) GetPositionAndState(ICommand command)
         {
-            if (command.GetType().Name == nameof(Place) 
+            if (command.GetType().Name == nameof(Place)
+                && command.Position.Location.Y >=0
+                && command.Position.Location.X >= 0
                 && command.Position.Location.Y<=Robot.Table.Height 
                 && command.Position.Location.X<=Robot.Table.Width)
             {

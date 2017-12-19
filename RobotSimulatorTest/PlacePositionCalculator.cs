@@ -17,6 +17,7 @@ namespace RobotSimulatorTest
         public void WhenGetPositionAndStatePlaceFacingNorth()
         {
             var mockRobot = new Mock<IRobot>();
+            mockRobot.SetupGet(r => r.Table).Returns(new Table(5, 5));
             mockRobot.SetupGet(r => r.CurrentPosition).Returns(new Position(new Location(1, 1), Direction.North));
             mockRobot.SetupGet(r => r.LateralSpeed).Returns(1);
             var mockCalculator = new Mock<ICalculator>();

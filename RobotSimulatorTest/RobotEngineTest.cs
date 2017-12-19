@@ -134,6 +134,292 @@ namespace RobotSimulatorTest
         }
 
         [Fact]
+        public void WhenPlacedState_and_PlacedIn_ExceedingTableBounds()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("PLACE 6,6,EAST");
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Placed), robot.CurrentState.GetType());
+            Assert.Equal(1,robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.North, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenMovedState_and_Placed_ExceedingTableBounds()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("Move");
+            robotEngine.Execute("PLACE 6,6,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Moved), robot.CurrentState.GetType());
+            Assert.Equal(2, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.North, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenMovedState_and_Left_ExceedingTableBounds()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("Left");
+            robotEngine.Execute("PLACE 6,6,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Turned), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.West, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Right_ExceedingTableBounds()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("Right");
+            robotEngine.Execute("PLACE 6,6,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Turned), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.East, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Placed_NegativeX()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("PLACE -1,1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Placed), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.North, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Placed_NegativeY()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("PLACE 1,-1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Placed), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.North, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Moved_NegativeX()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("MOVE");
+            robotEngine.Execute("PLACE -1,1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Moved), robot.CurrentState.GetType());
+            Assert.Equal(2, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.North, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Moved_NegativeY()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("MOVE");
+            robotEngine.Execute("PLACE 1,-1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Moved), robot.CurrentState.GetType());
+            Assert.Equal(2, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.North, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Left_NegativeX()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("left");
+            robotEngine.Execute("PLACE -1,1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Turned), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.West, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Left_NegativeY()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("left");
+            robotEngine.Execute("PLACE 1,-1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Turned), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.West, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Right_NegativeX()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("right");
+            robotEngine.Execute("PLACE -1,1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Turned), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.East, robot.CurrentPosition.Direction);
+        }
+
+        [Fact]
+        public void WhenPlacedState_and_Right_NegativeY()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,1,NORTH");
+            robotEngine.Execute("right");
+            robotEngine.Execute("PLACE 1,-1,EAST");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Turned), robot.CurrentState.GetType());
+            Assert.Equal(1, robot.CurrentPosition.Location.Y);
+            Assert.Equal(1, robot.CurrentPosition.Location.X);
+            Assert.Equal(Direction.East, robot.CurrentPosition.Direction);
+        }
+
+        
+
+        [Fact]
+        public void WhenInactiveAndPlaced_With_Negative_Values()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE -1,-1,NORTH");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Inactive), robot.CurrentState.GetType());
+        }
+
+        [Fact]
+        public void WhenInactiveAndPlaced_With_NegativeY()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE 1,-1,NORTH");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Inactive), robot.CurrentState.GetType());
+        }
+
+
+        [Fact]
+        public void WhenInactiveAndPlaced_With_NegativeX()
+        {
+            RegistrationService.TableWidth = 5;
+            RegistrationService.TableHeight = 5;
+            RegistrationService.LateralSpeed = 1;
+            RegistrationService.Register();
+            var robotEngine = RegistrationService.Container.Resolve<IRobotEngine>();
+            robotEngine.Execute("PLACE -1,1,NORTH");
+
+
+            var robot = RegistrationService.Container.Resolve<IRobot>();
+            Assert.Equal(typeof(Inactive), robot.CurrentState.GetType());
+        }
+
+
+
+        [Fact]
         public void WhenInactiveAndValidPlaceCommand_ExceedsWidth_Then_Placed_State()
         {
             RegistrationService.TableWidth = 5;

@@ -45,7 +45,7 @@ namespace RobotSimulatorLibrary.Commands.CommandParsers
 
         private bool IsParameterValid(string parameters)
         {
-            var regex = new Regex(@"(\d)[,\s]*(\d)[,\s]*(NORTH|EAST|SOUTH|WEST)");
+            var regex = new Regex(@"(-?\d)[,\s]*(-?\d)[,\s]*(NORTH|EAST|SOUTH|WEST)");
             var match = regex.Match(parameters.Trim());
             SetPosition(match);
             return match.Success;
