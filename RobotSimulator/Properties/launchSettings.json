@@ -1,8 +1,7 @@
 {
   "profiles": {
     "RobotSimulator": {
-      "commandName": "Project",
-      "commandLineArgs": "fileinput.txt"
+      "commandName": "Project"
     }
   }
 }

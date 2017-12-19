@@ -16,9 +16,13 @@ namespace RobotSimulatorLibrary.Calculators.Visitors
 
         public override (Position.Position position, IState state, bool isMatched) GetPositionAndState(ICommand command)
         {
-            return command.GetType().Name == nameof(Place) 
-                ? (command.Position, StateFactory.CreatePlaced(Robot), true) 
-                : Calculator.GetPositionAndState(command);
+            if (command.GetType().Name == nameof(Place) 
+                && command.Position.Location.Y<=Robot.Table.Height 
+                && command.Position.Location.X<=Robot.Table.Width)
+            {
+                return (command.Position, StateFactory.CreatePlaced(Robot), true);
+            }
+            return Calculator.GetPositionAndState(command);
         }
     }
 }

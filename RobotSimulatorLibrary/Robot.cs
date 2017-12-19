@@ -13,7 +13,7 @@ namespace RobotSimulatorLibrary
     public class Robot:IRobot
     {
         private IDisplayConsole _displayConsole;
-        private IState _currentState;
+        public IState CurrentState { get; private set; }
         public ITable Table { get; private set; }
         public Position.Position CurrentPosition { get; private set; }
         public int LateralSpeed { get; private set; }
@@ -21,14 +21,14 @@ namespace RobotSimulatorLibrary
         {
             Table = table;
             LateralSpeed = lateralSpeed;
-            _currentState = StateFactory.CreateInactive(this);
+            CurrentState = StateFactory.CreateInactive(this);
             _displayConsole = displayConsole;
         }
         public void Execute(ICommand command)
         {
             if(command==null)
                 throw new ArgumentException(nameof(command));
-            _currentState.Execute(command);
+            CurrentState.Execute(command);
         }
 
         public Position.Position GetReport()
@@ -52,7 +52,7 @@ namespace RobotSimulatorLibrary
 
         public void SetCurrentState(IState state)
         {
-            _currentState = state;
+            CurrentState = state;
         }
 
         private bool IsNewPositionValid(Position.Position position)

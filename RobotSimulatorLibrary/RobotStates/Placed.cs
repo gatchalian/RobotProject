@@ -7,7 +7,7 @@ using RobotSimulatorLibrary.Interfaces;
 
 namespace RobotSimulatorLibrary.RobotStates
 {
-    class Placed:BaseState
+    public class Placed:BaseState
     {
         public Placed(IRobot robot,ICalculator calculator):base(robot,calculator) 
         {

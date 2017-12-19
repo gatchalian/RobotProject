@@ -19,7 +19,7 @@ namespace RobotSimulatorLibrary.Factories
         }
         public static IState CreateInactive(IRobot robot)
         {
-            return new Inactive(robot,CalculatorFactory.CreateForActiveCalculator(robot));
+            return new Inactive(robot,CalculatorFactory.CreateForInactiveCalculator(robot));
         }   
     }
 }
